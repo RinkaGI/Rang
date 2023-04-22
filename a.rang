@@ -1,0 +1,5 @@
+class Main then
+    Main() then
+        Console.Print("Hello world")
+    end
+end

@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import Console from './systems/classes/Console.js';
 
 export default class Parser {
     constructor(code) {
@@ -57,49 +58,8 @@ export default class Parser {
     }
 
     addConsoleClass(code) {
-        let consoleClass = `
-        class Console { 
-            static Print(...args) { 
-                return console.log(...args);
-            } 
-            
-            static Clear() {
-                return console.clear()
-            } 
-            
-            static Debug(...args) {
-                return console.debug(...args)
-            }
-
-            static ViewObject(object){
-                console.dir(object)
-            } 
-            
-            static Error(...args){
-                console.error(...args)
-            } 
-
-            static Group(label){
-                console.group(label)
-            } 
-            
-            static EndGroup(){
-                console.groupEnd()
-            } 
-            
-            static Info(...args){
-                console.info(...args)
-            } 
-            
-            static Table(...args){
-                console.table(...args)
-            } 
-            
-            static Warn(...args){
-                console.warn(...args)
-            }
-        } \n`
-        code = consoleClass + code;
+        let consoleString = Console.getString();
+        code = consoleString + code;
         return code
     }
 

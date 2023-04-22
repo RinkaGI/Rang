@@ -11,11 +11,16 @@ The file extension of Rang codes is `.rang`.
 If there is a thing that you don't like with Rang, you can just use that like JavaScript (ex: "i dont like then/end system", so use normal javascript braces lol)
 
 ## TO-DO:
-    - Add a time system
-    - Add suport to non-main class.
-    - Code explanation in README.md
-    - Documentation
-    - Logo
+    - [X] More source organization (separate systems (Console system, future Time system) on different files
+    - [ ] Add a time system
+    - [ ] Add support to non-main class.
+    - [ ] Code explanation in README.md
+    - [ ] Documentation
+    - [ ] Logo
+    - [ ] NPM Package 
+    - [ ] Web: rang playground 
+
+    - [ ] **FIRST RELEASE**
 
 `Do you have a suggest? Add it to issues`
 
@@ -30,7 +35,7 @@ class Main then
 end
 ```
 
-## Diferences from JS
+## Differences from JS
 | Rang                                                 | JavaScript          | Why?                                                                      |
 |------------------------------------------------------|---------------------|---------------------------------------------------------------------------|
 | Main entry point (Main class with Main method class) | No main entry point | More organized code                                                       |
