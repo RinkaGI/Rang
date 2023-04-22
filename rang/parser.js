@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import Console from './systems/classes/Console.js';
+import Time from './systems/classes/Time.js';
 
 export default class Parser {
     constructor(code) {
@@ -63,11 +64,18 @@ export default class Parser {
         return code
     }
 
+    addTimeClass(code) {
+        let timeString = Time.getString();
+        code = timeString + code;
+        return code
+    }
+
     parseEverything(code) {
         code = this.addEntryPoint(code);
         code = this.parseCatchKeyword(code);
 
         code = this.addConsoleClass(code);
+        code = this.addTimeClass(code);
 
         code = this.parseOpenBrace(code);
         code = this.parseCloseBrace(code);
