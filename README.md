@@ -12,7 +12,7 @@ If there is a thing that you don't like with Rang, you can just use that like Ja
 
 ## TO-DO:
     - [X] More source organization (separate systems (Console system, future Time system) on different files
-    - [ ] Add a time system
+    - [ ] Add a time system (working on it)
     - [ ] Add support to non-main class.
     - [ ] Code explanation in README.md
     - [ ] Documentation
