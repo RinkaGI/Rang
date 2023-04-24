@@ -1,13 +1,30 @@
 import Parser from './parser.js';
 import * as fs from 'fs';
-import { exec } from 'child_process';
+import { spawn, exec } from 'child_process';
 
 class Interpreter {
     static Interpret(code) {
-        exec('node output.js', (error, stdout, stderr) => {
-            if (error) throw error;
-            console.log(stdout);
-            console.log(stderr)
+        // migrated to 'spawn' for support huge data output 
+
+        // exec('node output.js', (error, stdout, stderr) => {
+        //     if (error) throw error;
+        //     console.log(stdout);
+        //     console.log(stderr)
+        // })
+
+
+        const process = spawn('node', ['output.js']);
+
+        process.stdout.on('data', (data) => {
+            console.log(data.toString())
+        })
+
+        process.stderr.on('data', (data) => {
+            console.log(data.toString())
+        })
+
+        process.on('close', (code) => {
+            console.log('Script was exited with code ' + code)
         })
     }
 }

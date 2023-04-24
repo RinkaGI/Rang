@@ -1,0 +1,24 @@
+// Example program: Which is faster, for or while.
+
+class Main then
+    Main() then
+        Time.StartConsoleTimer("for")
+
+        for (let i = 0; i > 10; i++) then
+
+        end
+
+        Time.EndConsoleTimer("for")
+
+
+        Time.StartConsoleTimer("while")
+
+        let i = 0
+
+        while (i > 10) then
+            i++
+        end
+
+        Time.EndConsoleTimer("while")
+    end
+end

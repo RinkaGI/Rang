@@ -11,9 +11,9 @@ The file extension of Rang codes is `.rang`.
 If there is a thing that you don't like with Rang, you can just use that like JavaScript (ex: "i dont like then/end system", so use normal javascript braces lol)
 
 ## TO-DO:
-    - [X] More source organization (separate systems (Console system, future Time system) on different files
-    - [ ] Add a time system (working on it)
-    - [ ] Add support to non-main class.
+    - [X] More source organization (separate systems (Console system, future Time system) on different files)
+    - [X] Add a time system
+    - [ ] Add support to non-main class. (working on it)
     - [ ] Code explanation in README.md
     - [ ] Documentation
     - [ ] Logo
@@ -35,10 +35,39 @@ class Main then
 end
 ```
 
+### [For VS While](https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_console_time3)
+```
+// Example program: Which is faster, for or while.
+
+class Main then
+    Main() then
+        Time.StartConsoleTimer("for")
+
+        for (let i = 0; i > 10; i++) then
+
+        end
+
+        Time.EndConsoleTimer("for")
+
+
+        Time.StartConsoleTimer("while")
+
+        let i = 0
+
+        while (i > 10) then
+            i++
+        end
+
+        Time.EndConsoleTimer("while")
+    end
+end
+```
+
 ## Differences from JS
-| Rang                                                 | JavaScript          | Why?                                                                      |
-|------------------------------------------------------|---------------------|---------------------------------------------------------------------------|
-| Main entry point (Main class with Main method class) | No main entry point | More organized code                                                       |
-| then / end                                           | { }                 | More readable code for new programmers                                    |
-| `Console` class                                      | `console` class     | `Console` class is `console` class adapted for NodeJS and new programmers |
-| `except` keyword                                     | `catch` keyword     | More understable for new programmers                                      |
+| Rang                                                 | JavaScript                           | Why?                                                                      |
+|------------------------------------------------------|--------------------------------------|---------------------------------------------------------------------------|
+| Main entry point (Main class with Main method class) | No main entry point                  | More organized code                                                       |
+| then / end                                           | { }                                  | More readable code for new programmers                                    |
+| `Console` class                                      | `console` class                      | `Console` class is `console` class adapted for NodeJS and new programmers |
+| `except` keyword                                     | `catch` keyword                      | More understable for new programmers                                      |
+| `Time` class                                         | `Date` class and `console` functions | We can use most used JavaScript time tools in just one class.             |
