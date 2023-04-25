@@ -9,11 +9,28 @@ export default class Parser {
     }
 
     addEntryPoint(code) {
-        code += `
-        let main = new Main();
-        main.Main();
-        `;
-        return code
+        // code += `
+        // let main = new Main();
+        // main.Main();
+        // `;
+        // return code
+
+        const lines = code.split('\n');
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i]
+
+            if (line.includes('class Main ') && !this.checkString('class Main ', line)) {
+                code += `
+                let main = new Main();
+                main.Main();
+                `;
+
+                return code;
+            }
+        }
+
+        return code;
     }
 
     parseCatchKeyword(code) {
@@ -91,25 +108,20 @@ export default class Parser {
         if (!line.includes(phrase)) {
             return false;
         }
-
         if (line.split(phrase).length - 1 > 1) {
             return returnIfMultiple;
         }
-
         const leftSide = line.split(phrase)[0];
-
-        if (leftSide.split('"').length - 1 > 0) {
-            if (leftSide.split('"').length % 2 === 0) {
+        if (leftSide.split("\"").length - 1 > 0) {
+            if (leftSide.split("\"").length - 1 % 2 === 0) {
                 return false;
             } else {
                 return true;
             }
         }
-
-        if (leftSide.split("'").length - 1 > 0) {
-            if (leftSide.split("'").length % 2 === 0) {
+        if (leftSide.split("\'").length - 1 > 0) {
+            if (leftSide.split("\'").length - 1 % 2 === 0) {
                 return false;
-
             } else {
                 return true;
             }

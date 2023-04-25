@@ -13,8 +13,8 @@ If there is a thing that you don't like with Rang, you can just use that like Ja
 ## TO-DO:
     - [X] More source organization (separate systems (Console system, future Time system) on different files)
     - [X] Add a time system
-    - [ ] Add support to non-main class. (working on it)
-    - [ ] Code explanation in README.md
+    - [X] Add support to non-main class.
+    - [ ] Code explanation in README.md (working on it)
     - [ ] Documentation
     - [ ] Logo
     - [ ] NPM Package 
@@ -63,10 +63,15 @@ class Main then
 end
 ```
 
+### [No Main Entry Point](https://github.com/RinkaGI/Rang/blob/main/example/NoEntryPoint.rang)
+```
+Console.Print("This is a program written in Rang without use the Main class")
+```
+
 ## Differences from JS
 | Rang                                                 | JavaScript                           | Why?                                                                      |
 |------------------------------------------------------|--------------------------------------|---------------------------------------------------------------------------|
-| Main entry point (Main class with Main method class) | No main entry point                  | More organized code                                                       |
+| Main entry point (Main class with Main method class and not compulsory) | No main entry point                  | More organized code                                                       |
 | then / end                                           | { }                                  | More readable code for new programmers                                    |
 | `Console` class                                      | `console` class                      | `Console` class is `console` class adapted for NodeJS and new programmers |
 | `except` keyword                                     | `catch` keyword                      | More understable for new programmers                                      |
