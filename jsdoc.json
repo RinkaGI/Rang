@@ -1,0 +1,17 @@
+{
+    "plugins": [],
+    "source": {
+        "include": ["rang", "example"],
+        "excludePattern": "(node_modules|docs)"
+    },
+
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false
+    },
+
+    "opts": {
+        "recurse": true,
+        "destination": "./doc"
+    }
+}
