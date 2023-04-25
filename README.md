@@ -14,8 +14,8 @@ If there is a thing that you don't like with Rang, you can just use that like Ja
 - [X] More source organization (separate systems)
 - [x] Add a time system
 - [X] Add support to non-main class.
-- [X] Code explanation in README.md (working on it)
-- [ ] Documentation
+- [X] Code explanation in README.md
+- [ ] Documentation (working on it)
 - [ ] Logo
 - [ ] NPM Package
 - [ ] Web: Rang Playground
