@@ -25,8 +25,10 @@ Use NPX Rang command: `npx rang --help`
 - [X] Documentation
 - [X] Logo
 - [X] NPM Package
-- [ ] Web: Rang Playground
-- [ ] FIRST OFFICIAL RELEASE 🎉🎉🎉
+- [X] FIRST OFFICIAL RELEASE 🎉🎉🎉
+
+- [ ] Operators https://www.w3schools.com/js/js_operators.asp
+- [ ] Change the name of `output.js` generated file to the original rang file.
 
 `Do you have a suggest? Add it to issues`
 
