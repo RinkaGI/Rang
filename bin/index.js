@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import Parser from './parser.js';
 import * as fs from 'fs';
 import { spawn, exec } from 'child_process';

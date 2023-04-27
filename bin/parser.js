@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import * as fs from 'fs';
 import Console from './systems/classes/Console.js';
 import Time from './systems/classes/Time.js';

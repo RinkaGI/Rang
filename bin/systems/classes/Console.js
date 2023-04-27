@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 /**
  * Console class for control the console of the project.
  */

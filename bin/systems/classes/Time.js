@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 /**
  * Time class, you can code time-related things
  */

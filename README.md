@@ -5,7 +5,7 @@
 <a href="https://github.com/RinkaGI/Rangstargazers"><img alt = "Stars" src = "https://img.shields.io/github/stars/RinkaGI/Rang"></a>
 <a href="https://github.com/RinkaGI/Rang/blob/main/LICENSE"><img alt = "License" src = "https://img.shields.io/github/license/RinkaGI/Rang"></a>
 
-<img src="./rang/assets/logo.png" alt="Rang logo" align="right" width="128" height="128"/>
+<img src="./bin/assets/logo.png" alt="Rang logo" align="right" width="128" height="128"/>
 
 **RANG** is a JavaScript transpiled programming language, the goal of this project is convert JavaScript to a more friendly-language.
 
@@ -21,7 +21,7 @@ Docs: https://rinkagi.github.io/Rang/
 - [X] Code explanation in README.md
 - [X] Documentation
 - [X] Logo
-- [ ] NPM Package
+- [X] NPM Package
 - [ ] Web: Rang Playground
 - [ ] FIRST OFFICIAL RELEASE 🎉🎉🎉
 

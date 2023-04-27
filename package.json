@@ -1,5 +1,11 @@
 {
+  "name": "@rinkadev/rang",
+  "version": "1.0.0",
   "dependencies": {
+    "@rinkadev/rang": "^1.0.0",
     "jsdoc": "^4.0.2"
+  },
+  "bin": {
+    "rang": "bin/index.js"
   }
 }
