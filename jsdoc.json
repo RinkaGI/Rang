@@ -2,6 +2,7 @@
     "plugins": [],
     "source": {
         "include": ["rang", "example"],
+        "includePattern": "(.js$|.md$)",
         "excludePattern": "(node_modules|docs)"
     },
 
@@ -13,5 +14,10 @@
     "opts": {
         "recurse": true,
         "destination": "./doc"
+    },
+
+    "pipelineOperator": {
+        "proposal": "hack",
+        "topicToken": "#"
     }
 }
