@@ -14,6 +14,9 @@ If there is a thing that you don't like with Rang, you can just use that like Ja
 
 Docs: https://rinkagi.github.io/Rang/
 
+Install NPM rang package: `npm i -g rang`
+Use NPX Rang command: `npx rang --help`
+
 ## TO-DO:
 - [X] More source organization (separate systems)
 - [x] Add a time system
