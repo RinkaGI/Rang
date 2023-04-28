@@ -35,6 +35,146 @@ export default class Parser {
         return code;
     }
 
+    parseEqualToOperator(code) {
+        const lines = code.split('\n')
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            const words = line.split(' ')
+
+            // if (line.includes('equal to') && !this.checkString('equal to', line)) {
+            //     code = code.replace(line, line.replace('equal to', "=="))
+            // }
+
+            for (let wordNo = 0; wordNo < lines.length; wordNo++) {
+                let word = words[wordNo];
+
+                if (word == 'equal' && !this.checkString('equal', line)) {
+                    if (words[wordNo - 1] != 'not') {
+                        code = code.replace(line, line.replace('equal to', "=="))
+                    }
+                }
+            }
+        }
+
+        return code;
+    }
+
+    parseNotEqualToOperator(code) {
+        const lines = code.split('\n')
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            const words = line.split(' ')   
+
+            // if (line.includes('not equal to') && !this.checkString('not equal to', line)) {
+            //     code = code.replace(line, line.replace('not equal to', "!="))
+            // }
+
+            for (let wordNo = 0; wordNo < lines.length; wordNo++) {
+                let word = words[wordNo];
+
+                if (word == 'not' && !this.checkString('not', line)) {
+                    if (words[wordNo + 1] == 'equal') {
+                        if (words [wordNo + 2] == 'to') {
+                            code = code.replace(line, line.replace('not equal to', "!="))
+                        }
+                    }
+                }
+            }
+        }
+
+        return code;
+    }
+
+    parseGreaterThanOperator(code) {
+        const lines = code.split('\n')
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            const words = line.split(' ')   
+
+            for (let wordNo = 0; wordNo < lines.length; wordNo++) {
+                let word = words[wordNo];
+
+                if (word == 'greater' && !this.checkString('greater', line)) {
+                    if (words[wordNo + 1] == 'than') {
+                        code = code.replace(line, line.replace('greater than', ">"))
+                    }
+                }
+            }
+        }
+
+        return code;
+    }
+
+    parseGreaterEqualThanOperator(code) {
+        const lines = code.split('\n')
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            const words = line.split(' ')   
+
+            for (let wordNo = 0; wordNo < lines.length; wordNo++) {
+                let word = words[wordNo];
+
+                if (word == 'greater' && !this.checkString('greater', line)) {
+                    if (words[wordNo + 1] == 'equal') {
+                        if (words[wordNo + 1] == 'than') {
+                            code = code.replace(line, line.replace('greater equal than', '>='))
+                        }
+                    }
+                }
+            }
+        }
+
+        return code;
+    }
+
+    parseLessEqualThanOperator(code) {
+        const lines = code.split('\n')
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            const words = line.split(' ')   
+
+            for (let wordNo = 0; wordNo < lines.length; wordNo++) {
+                let word = words[wordNo];
+
+                if (word == 'less' && !this.checkString('less', line)) {
+                    if (words[wordNo + 1] == 'equal') {
+                        if (words[wordNo + 1] == 'than') {
+                            code = code.replace(line, line.replace('less equal than', '<='))
+                        }
+                    }
+                }
+            }
+        }
+
+        return code;
+    }
+
+    parseLessThanOperator(code) {
+        const lines = code.split('\n')
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            const words = line.split(' ')   
+
+            for (let wordNo = 0; wordNo < lines.length; wordNo++) {
+                let word = words[wordNo];
+
+                if (word == 'less' && !this.checkString('less', line)) {
+                    if (words[wordNo + 1] == 'than') {
+                        code = code.replace(line, line.replace('less than', "<"))
+                    }
+                }
+            }
+        }
+
+        return code;
+    }
+
     parseCatchKeyword(code) {
         const lines = code.split('\n')
 
@@ -98,6 +238,13 @@ export default class Parser {
 
         code = this.parseOpenBrace(code);
         code = this.parseCloseBrace(code);
+
+        code = this.parseEqualToOperator(code);
+        code = this.parseNotEqualToOperator(code);
+        code = this.parseGreaterThanOperator(code);
+        code = this.parseLessThanOperator(code);
+        code = this.parseGreaterEqualThanOperator(code);
+        code = this.parseLessEqualThanOperator(code);
 
         fs.writeFile("output.js", code, (err) => {
             if (err) throw err;
