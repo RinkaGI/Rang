@@ -37,28 +37,24 @@ export default class Parser {
 
     parseEqualToOperator(code) {
         const lines = code.split('\n')
-
+      
         for (let i = 0; i < lines.length; i++) {
-            const line = lines[i];
-            const words = line.split(' ')
-
-            // if (line.includes('equal to') && !this.checkString('equal to', line)) {
-            //     code = code.replace(line, line.replace('equal to', "=="))
-            // }
-
-            for (let wordNo = 0; wordNo < lines.length; wordNo++) {
-                let word = words[wordNo];
-
-                if (word == 'equal' && !this.checkString('equal', line)) {
-                    if (words[wordNo - 1] != 'not') {
-                        code = code.replace(line, line.replace('equal to', "=="))
-                    }
-                }
+          const line = lines[i];
+          const words = line.split(' ')
+      
+          for (let wordNo = 0; wordNo < words.length; wordNo++) { // cambio en esta linea
+            let word = words[wordNo];
+      
+            if (word == 'equal' && !this.checkString('equal', line)) {
+              if (words[wordNo - 1] != 'not') {
+                code = code.replace(/\bequal to\b/g, "=="); // uso de regex para reemplazar solo la palabra exacta
+              }
             }
+          }
         }
-
+      
         return code;
-    }
+      }
 
     parseNotEqualToOperator(code) {
         const lines = code.split('\n')
@@ -71,13 +67,13 @@ export default class Parser {
             //     code = code.replace(line, line.replace('not equal to', "!="))
             // }
 
-            for (let wordNo = 0; wordNo < lines.length; wordNo++) {
+            for (let wordNo = 0; wordNo < words.length; wordNo++) {
                 let word = words[wordNo];
 
                 if (word == 'not' && !this.checkString('not', line)) {
                     if (words[wordNo + 1] == 'equal') {
                         if (words [wordNo + 2] == 'to') {
-                            code = code.replace(line, line.replace('not equal to', "!="))
+                            code = code.replace(line, line.replace(/\bnot equal to\b/g, "!="))
                         }
                     }
                 }
@@ -94,12 +90,12 @@ export default class Parser {
             const line = lines[i];
             const words = line.split(' ')   
 
-            for (let wordNo = 0; wordNo < lines.length; wordNo++) {
+            for (let wordNo = 0; wordNo < words.length; wordNo++) {
                 let word = words[wordNo];
 
                 if (word == 'greater' && !this.checkString('greater', line)) {
                     if (words[wordNo + 1] == 'than') {
-                        code = code.replace(line, line.replace('greater than', ">"))
+                        code = code.replace(line, line.replace(/\bgreater than\b/g, ">"))
                     }
                 }
             }
@@ -115,13 +111,13 @@ export default class Parser {
             const line = lines[i];
             const words = line.split(' ')   
 
-            for (let wordNo = 0; wordNo < lines.length; wordNo++) {
+            for (let wordNo = 0; wordNo < words.length; wordNo++) {
                 let word = words[wordNo];
 
                 if (word == 'greater' && !this.checkString('greater', line)) {
                     if (words[wordNo + 1] == 'equal') {
                         if (words[wordNo + 1] == 'than') {
-                            code = code.replace(line, line.replace('greater equal than', '>='))
+                            code = code.replace(line, line.replace(/\bgreater equal than\b/g, '>='))
                         }
                     }
                 }
@@ -138,13 +134,13 @@ export default class Parser {
             const line = lines[i];
             const words = line.split(' ')   
 
-            for (let wordNo = 0; wordNo < lines.length; wordNo++) {
+            for (let wordNo = 0; wordNo < words.length; wordNo++) {
                 let word = words[wordNo];
 
                 if (word == 'less' && !this.checkString('less', line)) {
                     if (words[wordNo + 1] == 'equal') {
                         if (words[wordNo + 1] == 'than') {
-                            code = code.replace(line, line.replace('less equal than', '<='))
+                            code = code.replace(line, line.replace(/\bless equal than\b/g, '<='))
                         }
                     }
                 }
@@ -161,14 +157,56 @@ export default class Parser {
             const line = lines[i];
             const words = line.split(' ')   
 
-            for (let wordNo = 0; wordNo < lines.length; wordNo++) {
+            for (let wordNo = 0; wordNo < words.length; wordNo++) {
                 let word = words[wordNo];
 
                 if (word == 'less' && !this.checkString('less', line)) {
                     if (words[wordNo + 1] == 'than') {
-                        code = code.replace(line, line.replace('less than', "<"))
+                        code = code.replace(line, line.replace(/\bless than\b/g, "<"))
                     }
                 }
+            }
+        }
+
+        return code;
+    }
+
+    parseAndConditionalOperator(code) {
+        const lines = code.split('\n')
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+
+            if (line.includes('and') && !this.checkString('and', line)) {
+                code = code.replace(line, line.replace(/\band\b/g, "&&"))
+            }
+        }
+
+        return code;
+    }
+
+    parseOrConditionalOperator(code) {
+        const lines = code.split('\n')
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+
+            if (line.includes('or') && !this.checkString('or', line) && line.includes('if')) {
+                code = code.replace(line, line.replace(/\bor\b/g, "&&"))
+            }
+        }
+
+        return code;
+    }
+
+    parseNotConditionalOperator(code) {
+        const lines = code.split('\n')
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+
+            if (line.includes('not') && !this.checkString('not', line)) {
+                code = code.replace(line, line.replace(/\bnot\b/g, "!"))
             }
         }
 
@@ -182,7 +220,7 @@ export default class Parser {
             const line = lines[i];
 
             if (line.includes('except') && !this.checkString('except', line)) {
-                code = code.replace(line, line.replace("except", "catch"))
+                code = code.replace(line, line.replace(/\bexcept\b/g, "catch"))
             }
         }
         
@@ -196,10 +234,31 @@ export default class Parser {
           const line = lines[i];
 
           if (line.includes('then') && !this.checkString('then', line)) {
-            code = code.replace(line, line.replace("then", "{"))
+            code = code.replace(line, line.replace('then', "{"))
           }
         }
         
+        return code;
+    }
+
+    parseTypeOfOperator(code) {
+        const lines = code.split('\n')
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            const words = line.split(' ')   
+
+            for (let wordNo = 0; wordNo < words.length; wordNo++) {
+                let word = words[wordNo];
+
+                if (word == 'type' && !this.checkString('type', line)) {
+                    if (words[wordNo + 1] == 'of') {
+                        code = code.replace(line, line.replace(/\btype of\b/g, "typeof"))
+                    }
+                }
+            }
+        }
+
         return code;
     }
 
@@ -210,7 +269,7 @@ export default class Parser {
           const line = lines[i];
 
           if (line.includes('end') && !this.checkString('end', line)) {
-            code = code.replace(line, line.replace("end", "}"))
+            code = code.replace(line, line.replace(/\bend\b/g, "}"))
           }
         }
         
@@ -232,6 +291,7 @@ export default class Parser {
     parseEverything(code) {
         code = this.addEntryPoint(code);
         code = this.parseCatchKeyword(code);
+        code = this.parseTypeOfOperator(code);
 
         code = this.addConsoleClass(code);
         code = this.addTimeClass(code);
@@ -245,6 +305,10 @@ export default class Parser {
         code = this.parseLessThanOperator(code);
         code = this.parseGreaterEqualThanOperator(code);
         code = this.parseLessEqualThanOperator(code);
+        code = this.parseAndConditionalOperator(code);
+        code = this.parseNotConditionalOperator(code);
+        code = this.parseOrConditionalOperator(code);
+        
 
         fs.writeFile("output.js", code, (err) => {
             if (err) throw err;

@@ -10,7 +10,8 @@
 **RANG** is a JavaScript transpiled programming language, the goal of this project is convert JavaScript to a more friendly-language.
 
 The file extension of Rang codes is `.rang`.
-If there is a thing that you don't like with Rang, you can just use that like JavaScript (ex: "i dont like then/end system", so use normal javascript braces lol)
+
+***If there is a thing that you don't like with Rang, you can just use that like JavaScript (ex: "i dont like then/end system", so use normal javascript braces lol)***
 
 Docs: https://rinkagi.github.io/Rang/
 
@@ -27,7 +28,7 @@ Use NPX Rang command: `npx rang --help`
 - [X] NPM Package
 - [X] FIRST OFFICIAL RELEASE 🎉🎉🎉
 
-- [ ] Operators https://www.w3schools.com/js/js_operators.asp
+- [X] Operators and conditionals
 - [ ] Change the name of `output.js` generated file to the original rang file.
 
 `Do you have a suggest? Add it to issues`
@@ -107,3 +108,12 @@ Console.Print("This is a program written in Rang without use the Main class")
 | `Console` class                                      | `console` class                      | `Console` class is `console` class adapted for NodeJS and new programmers |
 | `except` keyword                                     | `catch` keyword                      | More understable for new programmers                                      |
 | `Time` class                                         | `Date` class and `console` functions | We can use most used JavaScript time tools in just one class.             |
+| `equal to` operator | `==` Operator | Less symbols
+| `greater than` operator | `>` Operator | Less symbols
+| `greater equal than` operator | `>=` Operator | Less symbols
+| `less than` operator | `<` operator | Less symbols
+| `less equal than` operator | `<=` operator | Less symbols
+| `and` operator | `==` operator | Less symbols
+| `or` operator | `||` operator | Less symbols
+| `not` operator | `!` operator | Less symbols
+| `type of` | `typeof` | idk

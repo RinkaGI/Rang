@@ -1,0 +1,7 @@
+class Main then
+    Main() then
+        if (2 equal to 2 and 345 greater than 8 or type of 'a' equal to 'string') {
+            Console.Print("John pork is calling")
+        }
+    end
+end
