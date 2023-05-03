@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import { spawn, exec } from 'child_process';
 
 class Interpreter {
-    static Interpret(code) {
+    static Interpret(code, parser) {
         // migrated to 'spawn' for support huge data output 
 
         // exec('node output.js', (error, stdout, stderr) => {
@@ -15,7 +15,7 @@ class Interpreter {
         // })
 
 
-        const process = spawn('node', ['output.js']);
+        const process = spawn('node', [parser.fileName]);
 
         process.stdout.on('data', (data) => {
             console.log(data.toString())
@@ -55,13 +55,13 @@ function handleArgs() {
 
     if (process.argv.slice(0)[2] == '--run' || process.argv.slice(0)[2] == '-r') {
         if (!process.argv.slice(0)[3]) throw new Error("You need to add a file")
-        let parser = new Parser(getCode(process.argv.slice(0)[3]));
-        Interpreter.Interpret(parser.code);
+        let parser = new Parser(getCode(process.argv.slice(0)[3]), process.argv.slice(0)[3]);
+        Interpreter.Interpret(parser.code, parser);
     }
 
     if (process.argv.slice(0)[2] == '--transpile' || process.argv.slice(0)[2] == '-t') {
         if (!process.argv.slice(0)[3]) throw new Error("You need to add a file")
-        let parser = new Parser(getCode(process.argv.slice(0)[3]));
+        let parser = new Parser(getCode(process.argv.slice(0)[3]), process.argv.slice);
         console.log('Saved in output.js');
     }
 }

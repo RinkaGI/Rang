@@ -5,9 +5,35 @@ import Console from './systems/classes/Console.js';
 import Time from './systems/classes/Time.js';
 
 export default class Parser {
-    constructor(code) {
+    constructor(code, fileName) {
         this.code = code
-        this.code = this.parseEverything(code);
+        this.fileName = fileName.replace('.rang', '.js')
+
+        code = this.addEntryPoint(code);
+        code = this.parseCatchKeyword(code);
+        code = this.parseTypeOfOperator(code);
+
+        code = this.addConsoleClass(code);
+        code = this.addTimeClass(code);
+
+        code = this.parseOpenBrace(code);
+        code = this.parseCloseBrace(code);
+
+        code = this.parseEqualToOperator(code);
+        code = this.parseNotEqualToOperator(code);
+        code = this.parseGreaterThanOperator(code);
+        code = this.parseLessThanOperator(code);
+        code = this.parseGreaterEqualThanOperator(code);
+        code = this.parseLessEqualThanOperator(code);
+        code = this.parseAndConditionalOperator(code);
+        code = this.parseNotConditionalOperator(code);
+        code = this.parseOrConditionalOperator(code);
+        
+        this.code = code
+
+        fs.writeFile(this.fileName, code, (err) => {
+            if (err) throw err;
+        });
     }
 
     addEntryPoint(code) {
@@ -289,32 +315,7 @@ export default class Parser {
     }
 
     parseEverything(code) {
-        code = this.addEntryPoint(code);
-        code = this.parseCatchKeyword(code);
-        code = this.parseTypeOfOperator(code);
 
-        code = this.addConsoleClass(code);
-        code = this.addTimeClass(code);
-
-        code = this.parseOpenBrace(code);
-        code = this.parseCloseBrace(code);
-
-        code = this.parseEqualToOperator(code);
-        code = this.parseNotEqualToOperator(code);
-        code = this.parseGreaterThanOperator(code);
-        code = this.parseLessThanOperator(code);
-        code = this.parseGreaterEqualThanOperator(code);
-        code = this.parseLessEqualThanOperator(code);
-        code = this.parseAndConditionalOperator(code);
-        code = this.parseNotConditionalOperator(code);
-        code = this.parseOrConditionalOperator(code);
-        
-
-        fs.writeFile("output.js", code, (err) => {
-            if (err) throw err;
-        });
-
-        return code;
     }
 
     checkString(phrase, line, returnIfMultiple=false) {

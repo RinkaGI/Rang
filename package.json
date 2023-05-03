@@ -1,6 +1,6 @@
 {
   "name": "@rinkadev/rang",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "dependencies": {
     "@rinkadev/rang": "^1.0.0",
     "jsdoc": "^4.0.2"

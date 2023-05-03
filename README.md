@@ -29,7 +29,7 @@ Use NPX Rang command: `npx rang --help`
 - [X] FIRST OFFICIAL RELEASE 🎉🎉🎉
 
 - [X] Operators and conditionals
-- [ ] Change the name of `output.js` generated file to the original rang file.
+- [X] Change the name of `output.js` generated file to the original rang file.
 
 `Do you have a suggest? Add it to issues`
 
