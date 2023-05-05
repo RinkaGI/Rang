@@ -30,6 +30,9 @@ Use NPX Rang command: `npx rang --help`
 
 - [X] Operators and conditionals
 - [X] Change the name of `output.js` generated file to the original rang file.
+- [ ] Game Framework
+- [ ] Discord Framework
+- [ ] Web Framework
 
 `Do you have a suggest? Add it to issues`
 
